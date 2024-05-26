@@ -3,20 +3,16 @@
 
 using std::pair;
 
-void greetings() //func that just returns information about author and work
+void info() 
 {
-    cout << "\nKudriya Denis, K13, Lab05, var_44\n\n";
-    cout << "Press Enter to Continue...";
-    char temp1; while(temp1 != '\n') std::cin.get(temp1);
-
-    cout << "\nWrite division of sequence in output.txt file with special subsequences(spiral, snake)\n\n";
-    cout << "Press Enter to Continue...";
-    char temp2; while(temp2 != '\n') std::cin.get(temp2);
+    cout << "Laboratory work is done by Kudria Denis K13 (variant 44)\n";
+    cout << "Sequence 1: Matrix's snake-type traversal in the lower left corner from the lowest right point\n";
+    cout << "Sequence 2: Matrix's spiral-type clockwise-direction traversal in the lower right corner from the highest right point\n";
 }
 
 void farewell()
 {
-  cout << "Program terminates, no problem found. Bye\n";
+  cout << "Program has been successfully terminated, no problem found. Bye\n";
 }
 
 void test() // for fast check just change value N
@@ -46,8 +42,7 @@ void test() // for fast check just change value N
 
 int main(int argc, char* argv[]) // use this startup options: -i in.txt -o o
 {
-    //test(); //for fast check
-    greetings(); // greeting message
+    info(); 
     string IN, OUT;
     if(!get_args(argc, argv, IN, OUT)) //checking argc
     {
@@ -58,16 +53,6 @@ int main(int argc, char* argv[]) // use this startup options: -i in.txt -o o
     ofstream Output(OUT, std::ofstream::out | std::ofstream::trunc); //opening out.txt
     try{
     Matrix input_maxtrix(Input); //constructing Matrix (see simple.cpp/simple.h) from given txt file
-
-/*
-    cout << input_maxtrix;
-    for(auto & it: spiral(input_maxtrix))
-    {
-       cout << it << " ";
-    }
-    cout << '\n';
-*/ // for fast check purpose
-
     pair<vector<int>, vector<int> > sequence{zmiyka(input_maxtrix),spiral(input_maxtrix)};
     Output << "First part: \n";
     for(auto&it: sequence.first)
